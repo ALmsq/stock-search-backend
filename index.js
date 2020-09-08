@@ -3,11 +3,16 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport')
 const dotenv = require('dotenv')
+const cors = require('cors')
 dotenv.config()
 
 const users = require('./routes/api/users')
 
 const app = express();
+
+//cors setup
+app.use(cors())
+app.options('*', cors())
 
 // Bodyparser middleware
 app.use(

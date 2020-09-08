@@ -36,7 +36,8 @@ User.findOne({ username: req.body.username }).then(user =>{
             const newUser = new User({
                 name: req.body.name,
                 username: req.body.username,
-                password: req.body.password
+                password: req.body.password,
+                stocks: req.body.stocks
             })
 
             //Hash password before saving in database
@@ -51,6 +52,7 @@ User.findOne({ username: req.body.username }).then(user =>{
             })
         }
     })
+    
 })
 
 // @route POST api/users/login
