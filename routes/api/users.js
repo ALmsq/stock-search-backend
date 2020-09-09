@@ -52,8 +52,30 @@ User.findOne({ username: req.body.username }).then(user =>{
             })
         }
     })
-    
 })
+
+// router.put('/stocks/:UserId', (req, res) => {
+//     User.findByIdAndUpdate({ _id: req.params.UserId }, req.body, {new: true}, (err, User) => {
+//         if(err){
+//             res.send(err)
+//         }
+//         res.json({ ...User.toObject().stocks})
+        
+//     })
+// })
+
+    router.put('/stocks/:UserId', (req, res) => {
+        User.updateOne({_id: req.params.UserId }, {$push: { stocks: [req.body.stocks]}}, (err, Result) => {
+            if(err){
+                res.send(err)
+            }else{
+                res.json({stocks: req.body.stocks})
+            }
+        })
+    })
+
+
+
 
 // @route POST api/users/login
 // @desc Login user and return JWT token
