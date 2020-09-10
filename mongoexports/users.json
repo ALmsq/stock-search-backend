@@ -1,0 +1,31 @@
+[
+    {
+        "_id":{"$oid":"5f49b88d51712c662941530c"},
+        "stocks":[],
+        "name":"",
+        "username":"pksalsa",
+        "password":"$2a$10$vHNIwdDBoZbhLRS8ZSs4jOGV3efGDHIaqtlNdNaF6BhTekx9aBehC",
+        "date":{"$date":"2020-08-29T02:08:13.98Z"},
+        "__v":0
+        },
+        
+        {
+            "_id":{"$oid":"5f4b190551712c662941530d"},
+            "stocks":[],
+            "name":"",
+            "username":"alexander",
+            "password":"$2a$10$mJnBU9ZT6.tDv.ScEXvlJuKyzqDWJXg411F7zNmzYY1yLNs8QOUfG",
+            "date":{"$date":"2020-08-30T03:12:05.803Z"},
+            "__v":0
+            },
+
+            {"_id":{"$oid":"5f5832a3f61d631dab8fc012"},
+            "stocks":["TSLA","GOOG"],
+            "name":"pkchips",
+            "username":"pkchips",
+            "password":"$2a$10$mZuFkOMuVSfbn8QC.rrUvebWwMGSGK1ZcUnIhFHiU3mXUA62u3t.O",
+            "date":{"$date":"2020-09-09T01:40:51.708Z"},
+            "__v":0
+            
+            }
+]
