@@ -64,17 +64,7 @@ User.findOne({ username: req.body.username }).then(user =>{
 //     })
 // })
 
-    router.put('/stocks/:UserId', (req, res) => {
-        User.updateOne({_id: req.params.UserId }, {$push: { stocks: [req.body.stocks]}}, (err, Result) => {
-            if(err){
-                res.send(err)
-            }else{
-                res.json({stocks: req.body.stocks})
-            }
-        })
-    })
-
-
+   
 
 
 // @route POST api/users/login
@@ -92,7 +82,7 @@ router.post('/login', (req, res) => {
     }
 
     const username = req.body.username
-        const password = req.body.password
+    const password = req.body.password
 
     //Find user by username
     User.findOne({ username }).then(user => {
@@ -109,8 +99,10 @@ router.post('/login', (req, res) => {
                 const payload = {
                     id: user.id,
                     name: user.name,
-                    username: username
+                    username: username,
+                    stocks: user.stocks
                 }
+                console.log('yo')
     //Sign token
         jwt.sign(
             payload,
@@ -134,5 +126,38 @@ router.post('/login', (req, res) => {
         })
     })
 })
+
+//stock array
+
+router.get('/stocks/:UserId', (req, res) => {
+    User.findById({_id: req.params.UserId}, (err, Result) =>{
+        if(err){
+            res.send(err)
+        }
+        res.json({stocks: Result.stocks})
+    })
+})
+
+router.put('/stocks/:UserId', (req, res) => {
+    User.updateOne({_id: req.params.UserId }, {$push: { stocks: [req.body.stocks]}}, (err, Result) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.json({stocks: req.body.stocks})
+        }
+    })
+})
+
+router.put('/stocks/delete/:UserId', (req, res) => {
+    User.updateOne({_id: req.params.UserId }, {$pop: { stocks: 1}}, (err, Result) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.json({stocks: req.body.stocks})
+        }
+    })
+})
+
+
 
 module.exports = router
